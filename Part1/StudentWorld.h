@@ -9,6 +9,7 @@
 
 // Students:  Add code to this file, StudentWorld.cpp, Actor.h, and Actor.cpp
 
+
 class StudentWorld : public GameWorld
 {
 public:
@@ -17,6 +18,9 @@ public:
     virtual int move();
     virtual void cleanUp();
     ~StudentWorld();
+    GhostRacer* getGhost() {return m_ghost;}
+    int LEFT_EDGE = ROAD_CENTER - ROAD_WIDTH/2;
+    int RIGHT_EDGE = ROAD_CENTER + ROAD_WIDTH/2;
 //    bool checkPosition(double x, double y);
 
 private:
