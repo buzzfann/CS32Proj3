@@ -13,11 +13,33 @@ GameWorld* createStudentWorld(string assetPath)
 StudentWorld::StudentWorld(string assetPath)
 : GameWorld(assetPath)
 {
+    m_ghost = nullptr;
+    actors.clear();
 }
 
 int StudentWorld::init()
 {
-    m_ghost = new GhostRacer(128, 32, this);
+    // add in new ghostracer
+    int startingX = 128;
+    int startingY = 32;
+    m_ghost = new GhostRacer(startingX, startingY, this);
+    int N = VIEW_HEIGHT/SPRITE_HEIGHT;
+    // add yellow borders
+    for (int j = 0; j < N; j++)
+    {
+        actors.push_back (new BorderLines(IID_YELLOW_BORDER_LINE, LEFT_EDGE, j*SPRITE_HEIGHT, this));
+        actors.push_back (new BorderLines(IID_YELLOW_BORDER_LINE, RIGHT_EDGE, j*SPRITE_HEIGHT, this));
+    }
+
+    // add white border lines
+    int M = VIEW_HEIGHT / (4*SPRITE_HEIGHT);
+    //left white border
+    for (int j = 0; j < M; j++)
+    {
+        actors.push_back (new BorderLines(IID_WHITE_BORDER_LINE, LEFT_EDGE + ROAD_WIDTH/3, j * (4*SPRITE_HEIGHT), this));
+        actors.push_back (new BorderLines(IID_WHITE_BORDER_LINE, RIGHT_EDGE - ROAD_WIDTH/3, j * (4*SPRITE_HEIGHT), this));
+    }
+    
     return GWSTATUS_CONTINUE_GAME;
 }
 
