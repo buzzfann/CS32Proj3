@@ -78,7 +78,7 @@ void GhostRacer::doSomething()
     double delta_x = cos(directRadians) * max_shift_per_tick;
     double cur_x = getX();
     double cur_y = getY();
-    moveTo(cur_x - delta_x, cur_y);
+    moveTo(cur_x + delta_x, cur_y);
     //move
     
 
