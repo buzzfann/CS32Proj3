@@ -26,7 +26,7 @@ int StudentWorld::init()
     // add in new ghostracer
     int startingX = 128;
     int startingY = 32;
-    m_ghost = new GhostRacer(startingX, startingY, this);
+    m_ghost = new GhostRacer(this);
     int N = VIEW_HEIGHT/SPRITE_HEIGHT;
     // add yellow borders
     for (int j = 0; j < N; j++)
