@@ -25,16 +25,12 @@ const double borderSize = 2.0;
 const int borderYSpeed = -4;
 const int borderXSpeed = 0;
 
-const int NEW_BORDER_Y = VIEW_HEIGHT - SPRITE_HEIGHT;
-
-
-
 class Actor : public GraphObject
 {
 public:
     Actor (int imageID, double startX, double startY, int dir, double size, int depth, bool alive, bool collideable, StudentWorld* world) :
             GraphObject(imageID, startX, startY, dir, size, depth),
-            m_world(world), m_alive(alive), m_collideable(collideable) {};
+            m_world(world), m_alive(alive), m_collideable(collideable), m_depth(depth) {};
     bool retAlive() {return m_alive;};
     
     virtual void doSomething() = 0;
@@ -45,6 +41,9 @@ public:
     int getHorizSpeed(){return m_xSpeed;}
     bool isAlive(){return m_alive;}
     void setAlive(bool set){m_alive = set;}
+    bool isBorderLine();
+    bool isCollideable(){return m_collideable;}
+    int getDepth(){return m_depth;}
 //    virtual ~Actor();
     
 private:
@@ -52,6 +51,7 @@ private:
     bool m_collideable;
     int m_xSpeed;
     int m_ySpeed;
+    int m_depth;
     StudentWorld* m_world;
 };
 
@@ -73,13 +73,12 @@ class BorderLines : public Actor
 public:
     BorderLines (int imageID, double startX, double startY, StudentWorld* world) :
     Actor (imageID, startX, startY, borderDirection, borderSize, borderDepth, true, false, world) {
-        setSpeed(-4, 0);
+        setSpeed(0, -4);
 //        m_ghost =
     };
     virtual void doSomething();
     
 private:
-//    GhostRacer* m_ghost;
 };
 
 //class HumanPed : public Actor
