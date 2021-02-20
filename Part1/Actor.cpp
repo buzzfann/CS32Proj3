@@ -68,13 +68,13 @@ void GhostRacer::doSomething()
                         setSpeed(getHorizSpeed(), getVertSpeed() - 1);
                     }
                     break;
-                    
+
             }
         }
     }
-    int max_shift_per_tick = 4.0;
+    double max_shift_per_tick = 4.0;
     int direction = getDirection();
-    int directRadians = direction * M_PI/180;
+    double directRadians = direction * M_PI/180;
     double delta_x = cos(directRadians) * max_shift_per_tick;
     double cur_x = getX();
     double cur_y = getY();
@@ -106,7 +106,6 @@ void BorderLines::doSomething()
     GhostRacer* ghost = getWorld()->getGhost();
     int vert_speed = this->getVertSpeed() - ghost->getVertSpeed();
     int horiz_speed = this->getHorizSpeed();
-//    int horiz_speed = 0;
     int new_y = this->getY() + vert_speed;
     int new_x = this->getX() + horiz_speed;
     this->moveTo(new_x, new_y);
