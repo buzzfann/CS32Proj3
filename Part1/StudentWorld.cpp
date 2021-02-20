@@ -82,7 +82,7 @@ int StudentWorld::move()
         i++;
     }
     // add actors
-    calcDeltaY = calcDeltaY + 4 + m_ghost->getVertSpeed();
+    calcDeltaY = calcDeltaY + 5 + m_ghost->getVertSpeed();
     int new_border_y = VIEW_HEIGHT - SPRITE_HEIGHT;
     int delta_y = calcDeltaY;
     if (firstTime && calcDeltaY >= SPRITE_HEIGHT)
