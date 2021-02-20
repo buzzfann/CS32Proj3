@@ -58,7 +58,7 @@ private:
 class GhostRacer : public Actor
 {
 public:
-    GhostRacer(int startX, int startY, StudentWorld* world)
+    GhostRacer(StudentWorld* world)
     : Actor(IID_GHOST_RACER, INITIAL_X, INITIAL_Y, INITIAL_DIRECTION, SIZE, DEPTH, true, true, world), m_health(INITIAL_HEALTH), m_spray(INITIAL_SPRAY)
     {};
     virtual void doSomething();
