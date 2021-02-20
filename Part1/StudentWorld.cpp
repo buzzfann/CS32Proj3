@@ -58,6 +58,7 @@ int StudentWorld::move()
             a->doSomething();
         }
     }
+    m_ghost->doSomething();
     
     
 //    vector<Actor*>::reverse_iterator j = actors.rbegin();
